@@ -1,5 +1,5 @@
 apiVersion: skaffold/v2alpha3
-king: Config
+kind: Config
 deploy:
   kubectl:
     manifests:
@@ -24,14 +24,6 @@ build:
         manual:
           - src: "*.js"
             dest: .
-    - image: pratikg17/posts
-      context: posts
-      docker:
-        dockerfile: Dockerfile
-      sync:
-        manual:
-          - src: "*.js"
-            dest: .
     - image: pratikg17/event-bus
       context: event-bus
       docker:
@@ -40,16 +32,24 @@ build:
         manual:
           - src: "*.js"
             dest: .
-    - image: pratikg17/query
-      context: query
+    - image: pratikg17/moderation
+      context: moderation
       docker:
         dockerfile: Dockerfile
       sync:
         manual:
           - src: "*.js"
             dest: .
-    - image: pratikg17/moderation
-      context: moderation
+    - image: pratikg17/posts
+      context: posts
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "*.js"
+            dest: .
+    - image: pratikg17/query
+      context: query
       docker:
         dockerfile: Dockerfile
       sync:
